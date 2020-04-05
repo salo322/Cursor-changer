@@ -1,0 +1,32 @@
+{
+    "name": "Hello Extensions",
+    "description" : "Base Level Extension",
+    "version": "1.0",
+    "icons":{
+        "128":"./images/test.png",
+        "48":"./images/test.png",
+        "16":"./images/test.png"
+    },
+
+    "manifest_version": 2,
+    "browser_action": {
+      "default_icon": "./images/test.png",
+      "default_popup": "popup.html"
+    },
+
+    "permissions": ["<all_urls>", "activeTab", "storage", "tabs","https://*/*"],
+
+    "background": {
+        "persistent": false,
+        "scripts": ["./scripts/jquery.js", "./scripts/background.js"]
+      },
+
+    "content_scripts": [
+        {
+          "run_at": "document_start",
+          "matches": ["<all_urls>"],
+          "js": ["./scripts/jquery.js", "./scripts/content.js"]
+        }
+      ]
+    
+}
